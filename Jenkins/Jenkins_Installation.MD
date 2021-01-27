@@ -51,7 +51,18 @@ Jenkins is a self-contained Java-based program, ready to run out-of-the-box, wit
    # Setup Jenkins to start at boot,
    chkconfig jenkins on
    ```
-
+   ### Change Jenkins Default Port 8080 in RHEL
+   Open Jenkins configuration file by using vim editor.
+     sudo vim /etc/sysconfig/jenkins
+   Inside the configuration file find the flowing line ‘JENKINS_PORT=”8080"’ and replace the port which you want to use.
+	Type: integer(0:65535)
+	Default: 8080
+	ServiceRestart: jenkins
+	Port Jenkins is listening on
+	Set to -1 to disable
+	JENKINS_PORT=”8180"  
+   After made the changes save and exit. And restart Jenkins service.
+	sudo systemctl restart jenkins
    ### Accessing Jenkins
    By default jenkins runs at port `8080`, You can access jenkins at
    ```sh
